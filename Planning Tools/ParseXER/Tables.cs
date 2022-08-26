@@ -1,10 +1,11 @@
 ﻿using ExcelDna.Integration;
-using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Office.Interop;
+using Microsoft.Office.Interop.Excel;
 
 namespace Planning_Tools.ParseXER
 {
@@ -42,7 +43,17 @@ namespace Planning_Tools.ParseXER
 
             ws.Range["A1"].Resize[1, this.Header.Length].Value = _headers;
             ws.Range["A2"].Resize[this.Rows.Count(), this.Header.Length].Value = _rows;
-            ws.Range["A1"].Resize[this.Rows.Count() + 1, this.Header.Length].EntireColumn.AutoFit();
+            //ws.Range["A1"].Resize[this.Rows.Count() + 1, this.Header.Length].EntireColumn.AutoFit();
+
+            Microsoft.Office.Interop.Excel.Range SourceRange = ws.Range["A1"].Resize[this.Rows.Count() + 1, this.Header.Length]; 
+            
+            FormatAsTable(SourceRange, this.TableName);
+        }
+        public void FormatAsTable(Microsoft.Office.Interop.Excel.Range SourceRange, string TableName)
+        {
+            SourceRange.Worksheet.ListObjects.Add(XlListObjectSourceType.xlSrcRange,
+            SourceRange, System.Type.Missing, XlYesNoGuess.xlYes, System.Type.Missing).Name =
+                TableName;            
         }
     }
 }
