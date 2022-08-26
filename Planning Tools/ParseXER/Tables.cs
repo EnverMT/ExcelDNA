@@ -43,9 +43,6 @@ namespace Planning_Tools.ParseXER
             ws.Range["A1"].Resize[1, this.Header.Length].Value = _headers;
             ws.Range["A2"].Resize[this.Rows.Count(), this.Header.Length].Value = _rows;
             ws.Range["A1"].Resize[this.Rows.Count() + 1, this.Header.Length].EntireColumn.AutoFit();
-
-
-            //ws.Columns["A:A"].EntireColumn.AutoFit();
         }
     }
 }

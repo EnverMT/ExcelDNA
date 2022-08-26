@@ -42,9 +42,9 @@ namespace Planning_Tools.ParseXER
             xlApp.ScreenUpdating = false;
             for (int i = 0; i < tables.Count(); i++)
             {
-                xlApp.StatusBar = String.Format($"Processing table {tables[i].TableName}. Total progress {i+1} of {tables.Count()}");
-                
-                tables[i].WriteTableDataToSheet();                
+                xlApp.StatusBar = String.Format($"Processing table {tables[i].TableName}. Total progress {i + 1} of {tables.Count()}");
+
+                tables[i].WriteTableDataToSheet();
             }
             xlApp.ScreenUpdating = true;
         }
@@ -56,10 +56,8 @@ namespace Planning_Tools.ParseXER
                 string[] row = _fileContent[i].Split('\t');
                 if (row[0] == "%T")
                 {
-                    if (_table != null)
-                    {
-                        tables.Add(_table);
-                    }
+                    if (_table != null) tables.Add(_table);
+
                     _table = new Tables();
                     _table.TableName = row[1];
                 }
@@ -68,14 +66,9 @@ namespace Planning_Tools.ParseXER
                     _table.Header = row.Skip(1).ToArray();
                     _table.Rows = new List<string[]>();
                 }
-                if (row[0] == "%R")
-                {
-                    _table.Rows.Add(row.Skip(1).ToArray()); ;
-                }
-                if (row[0] == "%E")
-                {
-                    tables.Add(_table);
-                }
+                if (row[0] == "%R") _table.Rows.Add(row.Skip(1).ToArray()); 
+                if (row[0] == "%E") tables.Add(_table);
+
             }
         }
 
