@@ -3,14 +3,14 @@ using System.Windows.Forms;
 using ExcelDna.Integration.CustomUI;
 
 
-namespace Ribbon
+namespace Planning_Tools
 {
     [ComVisible(true)]
     public class RibbonController : ExcelRibbon
     {
         public void OnButtonPressed_Cells_MyCopy(IRibbonControl control)
-        {   
-            DataWriter.WriteData();
+        {
+            MessageBox.Show("Not yet implemented " + control.Id);
         }
         public void OnButtonPressed_Cells_Paste(IRibbonControl control)
         {
@@ -26,7 +26,8 @@ namespace Ribbon
         }
         public void OnButtonPressed_Parse_XER(IRibbonControl control)
         {
-            Planning_Tools.ParseXER.Parse();            
+            var parser = new ParseXER.ParseXER();
+            parser.Parse();            
         }
     }
 }
