@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DnaLibrary Name="Planning Tools Add-In" RuntimeVersion="v4.0" xmlns="http://schemas.excel-dna.net/addin/2020/07/dnalibrary">
-  <ExternalLibrary Path="Planning Tools.dll" ExplicitExports="false" LoadFromBytes="true" Pack="true" IncludePdb="false" />
+	<ExternalLibrary Path="Planning Tools.dll" ExplicitExports="false" LoadFromBytes="true" Pack="true" IncludePdb="false" />
 
 	<CustomUI>
 
@@ -8,7 +8,7 @@
 			<ribbon>
 				<tabs>
 					<tab id='tab1' label='Planning Tools P6'>
-						<group id='group1' label='Cells'>
+						<group id='Cells' label='Cells'>
 							<button imageMso='Copy'
 									id='button_Cells_Copy'
 									label='MyCopy'
@@ -37,6 +37,40 @@
 									supertip='Очистить пустые ячейки, которые определяется Excel-ем как не пустые'/>
 
 						</group >
+						<group id='Auto' label='Auto'>
+							<gallery imageMso='CostResourceInsert'
+									 id="button_Auto_sum"
+									 label="Sum "
+									 onAction='OnButtonPressed_Auto_Sum'
+									 supertip='Суммирование и промежуточные итоги'
+									 columns='1'
+									 >
+								<item id="button_Auto_Sum" label="Sum" screentip='Суммирование и промежуточные итоги' imageMso="CostResourceInsert"/>
+								<item id="button_Auto_SumLoop" label="SumLoop" screentip='Суммирование и промежуточные итоги по циклу' imageMso="ViewCumulativeCostShow" />
+							</gallery>
+							<button imageMso='CostResourceInsert'
+									id='button_Auto_MinMax'
+									label='MinMax'
+									onAction='OnButtonPressed_Auto_MinMax'
+									supertip='Минимальное и максимальное значение'
+									/>
+							<separator id="Seperator_Auto_1"/>
+							<button imageMso='Mark100PercentComplete'
+									id='button_Auto_SumPro'
+									label='SumPro'
+									onAction='OnButtonPressed_Auto_SumPro'
+									supertip='Определить прогресс'
+									/>
+
+						</group>
+						<group id='parse_XER' label='Parse XER'>							
+							<button imageMso='CostResourceInsert'
+									id='button_parse_XER'
+									label='Parse XER'
+									onAction='OnButtonPressed_Parse_XER'
+									supertip='Parses content of XER file'
+									/>
+						</group>
 					</tab>
 				</tabs>
 			</ribbon>
@@ -44,6 +78,6 @@
 
 	</CustomUI>
 
- 
- 
+
+
 </DnaLibrary>

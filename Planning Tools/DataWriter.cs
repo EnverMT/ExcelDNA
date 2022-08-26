@@ -24,7 +24,7 @@ namespace Ribbon
 
             // Generally it's faster to write an array to a range
             var values = new object[100, 2];
-            var startDate = new DateTime(2007, 1, 1);
+            var startDate = new DateTime(2022, 7, 26);
             var rand = new Random();
             for (int i = 0; i < 100; i++)
             {
